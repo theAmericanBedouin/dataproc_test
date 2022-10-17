@@ -15,9 +15,6 @@ jobs:
     steps:
     # actions/checkout MUST come before auth
     - uses: 'actions/checkout@v3'
-    - run: |
-          pwd
-          ls
 
     - id: 'auth'
       name: 'Authenticate to Google Cloud'
@@ -29,6 +26,8 @@ jobs:
     - name: Set up gcloud Cloud SDK environment
       uses: google-github-actions/setup-gcloud@v0.6.0
     - run: |
+        gcloud auth login
+        gcloud config set project dataproc-test-365514
         gcloud dataproc batches submit pyspark citibike.py \
           --batch=dataproc-citibike-job-gha \
           --region=us-central1 \
