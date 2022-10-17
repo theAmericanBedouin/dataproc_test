@@ -1,3 +1,9 @@
+name: Dataproc Serverless Test
+
+on:
+  push:
+    branches: [ "main" ]
+
 jobs:
   job_id:
     # Add "id-token" with the intended permissions.
