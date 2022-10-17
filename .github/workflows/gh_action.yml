@@ -28,6 +28,7 @@ jobs:
 
     - name: 'Use gcloud CLI'
       run: |
+        gcloud config set account github-actions-test@dataproc-test-365514.iam.gserviceaccount.com
         gcloud config set project $GCP_PROJECT
         gcloud dataproc batches submit pyspark citibike.py \
           --batch=dataproc-citibike-job-gha \
