@@ -6,6 +6,7 @@ on:
 
 jobs:
   job_id:
+    runs-on: ubuntu-latest
     # Add "id-token" with the intended permissions.
     permissions:
       contents: 'read'
@@ -14,6 +15,9 @@ jobs:
     steps:
     # actions/checkout MUST come before auth
     - uses: 'actions/checkout@v3'
+    - uses: actions/setup-node@v3
+        with:
+          node-version: '16'
 
     - id: 'auth'
       name: 'Authenticate to Google Cloud'
