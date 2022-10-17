@@ -27,6 +27,7 @@ top_ten = df.filter(col("start_station_id") \
 
 top_ten.show()
 
+# Test
 top_ten.write \
   .format("bigquery") \
   .option("writeMethod", "direct") \
