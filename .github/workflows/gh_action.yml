@@ -26,8 +26,8 @@ jobs:
     - name: Set up gcloud Cloud SDK environment
       uses: google-github-actions/setup-gcloud@v0.6.0
     - run: |
-        gcloud auth login
-        gcloud config set project dataproc-test-365514
+        gcloud auth activate-service-account github-actions-test@dataproc-test-365514.iam.gserviceaccount.com --key-file=$GOOGLE_GHA_CREDS_PATH --project=$GCP_PROJECT
+        gcloud config set project $GCP_PROJECT
         gcloud dataproc batches submit pyspark citibike.py \
           --batch=dataproc-citibike-job-gha \
           --region=us-central1 \
