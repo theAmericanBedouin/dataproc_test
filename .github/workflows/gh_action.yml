@@ -29,7 +29,13 @@ jobs:
     - name: Set up gcloud Cloud SDK environment
       uses: google-github-actions/setup-gcloud@v0.6.0
     - run: |
-        gcloud help
+        gcloud dataproc batches submit pyspark citibike.py \
+          --batch=dataproc-citibike-job-gha \
+          --region=us-central1 \
+          --deps-bucket=dataproc-test-bucket-valdez \
+          --jars=gs://spark-lib/bigquery/spark-bigquery-with-dependencies_2.12-0.26.0.jar \
+        --history-server-cluster=projects/dataproc-test-365514/regions/us-central1/clusters/my-phs \
+          -- dataproc-test-bucket-valdez
 
     - name: 'Use gcloud CLI'
       run: 'gcloud info'
